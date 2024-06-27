@@ -1,0 +1,13 @@
+node { 
+def dockerlmageTag = "devopsexample${env.BUILD_NUMBER}"
+stage('Deploy deploy command’)
+{
+sh "docker images"
+sh "docker rm -f devopsexample "
+sh "docker run --name devopsexample -d -p 2222:2222 ashishpawar11111/myapplication:latest"
+//-Completion
+echo "----------------------------------------------------"
+echo "View App deployed here: http://server-ip:2222"
+echo "----------------------------------------------------"
+}
+}
